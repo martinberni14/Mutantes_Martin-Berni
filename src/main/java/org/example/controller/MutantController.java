@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/")
@@ -39,5 +40,9 @@ public class MutantController {
     @Operation(summary = "Obtener estadísticas")
     public ResponseEntity<StatsResponse> getStats() {
         return ResponseEntity.ok(statsService.getStats());
+    }
+    @GetMapping("/")
+    public RedirectView home() {
+        return new RedirectView("/swagger-ui.html");
     }
 }
